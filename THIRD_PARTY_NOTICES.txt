@@ -67,3 +67,5 @@ THIS SOFTWARE.
 Images: Cleveland Museum of Art CC0 collection.
 https://www.clevelandart.org/open-access
 Individual source records in seed.json.
+
+Original contemporary Chinese fallback text: 拾句 · AI-assisted original material, dedicated under CC0 1.0. Source: src/modern-texts.js in source.zip. https://creativecommons.org/publicdomain/zero/1.0/
