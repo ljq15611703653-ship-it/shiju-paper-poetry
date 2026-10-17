@@ -69,3 +69,7 @@ https://www.clevelandart.org/open-access
 Individual source records in seed.json.
 
 Original contemporary Chinese fallback text: 拾句 · AI-assisted original material, dedicated under CC0 1.0. Source: src/modern-texts.js in source.zip. https://creativecommons.org/publicdomain/zero/1.0/
+
+中文实时文章：Yaoxi Blog / 瑶曦。CC BY-NC-SA 4.0（https://creativecommons.org/licenses/by-nc-sa/4.0/）。仅供非商业使用，署名及相同方式共享；文章经过节选、重新排版，可被用户裁切拼贴。原文链接随每篇保存并在导出时标示。接口及许可说明：https://api.blog.yaoxi.cloud/posts/blog-api-guide/ 。仅使用文章正文，未使用博客配图。
+
+Hourly precollected Chinese prose: Water Space (whitewater), 和光同尘 (林深时觉寒), Tuorui Peng, 汐月观测站 (Xiyue), 可乐君de小站. CC BY-NC-SA 4.0. Individual source, author and license evidence recorded per article in materials.json; excerpted and rearranged for noncommercial collage. No source-site images included. Legacy notices above remain for saved workspaces.
