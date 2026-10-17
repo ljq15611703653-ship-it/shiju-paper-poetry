@@ -1,0 +1,51 @@
+name: Hourly Chinese materials and Pages
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [collect-materials.mjs, .github/workflows/materials.yml]
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: hourly-materials-pages
+  cancel-in-progress: false
+jobs:
+  collect-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install collector parser
+        run: npm install --no-save --package-lock=false --ignore-scripts cheerio@1.1.2
+      - name: Precollect licensed Chinese articles
+        run: node collect-materials.mjs .
+      - name: Persist cumulative pool and collection progress
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add materials.json collection-state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh licensed Chinese material pool"
+            git push
+          fi
+      - name: Prepare only website files
+        run: |
+          mkdir -p _site
+          cp index.html app.js style.css seed.json art-*.jpg materials.json THIRD_PARTY_NOTICES.txt _site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publish Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
