@@ -1,4 +1,4 @@
-// Runs in GitHub Actions. Never fetches source sites from a visitor's browser.
+// Hourly catalogue collection in GitHub Actions; the client separately prioritizes live prose and bundles 100 fallback articles.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
